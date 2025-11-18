@@ -1,0 +1,39 @@
+name: Deploy Strapi to VPS
+
+on:
+  push:
+    branches: ["develop"]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USERNAME }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          port: ${{ secrets.VPS_PORT }}
+          # timeout: 10m # Tăng thời gian chờ nếu build lâu (mặc định 30s có thể không đủ)
+          script: |
+            # 1. Di chuyển vào thư mục dự án (Sửa đường dẫn này đúng với VPS của bạn)
+            cd /var/www/my-strapi-project
+
+            # 2. Lấy code mới nhất từ nhánh develop
+            # 'git checkout' để chắc chắn đang ở đúng nhánh
+            git checkout develop
+            git pull origin develop
+
+            # 3. Cài đặt dependencies mới (nếu có)
+            # Dùng 'npm install' hoặc 'npm ci'
+            npm install
+
+            # 4. Build Strapi (Admin Panel)
+            # Đây là bước tốn tài nguyên nhất
+            NODE_ENV=production npm run build
+
+            # 5. Restart lại PM2
+            # Thay 'strapi-app' bằng tên bạn đã đặt trong PM2
+            pm2 restart strapi-be
