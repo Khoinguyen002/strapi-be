@@ -18,6 +18,15 @@ jobs:
           port: ${{ secrets.VPS_PORT }}
           # timeout: 10m # Tăng thời gian chờ nếu build lâu (mặc định 30s có thể không đủ)
           script: |
+            # Load NVM (Node Version Manager) thủ công
+            export NVM_DIR="$HOME/.nvm"
+            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+
+            # Kiểm tra xem đã nhận chưa (Optional)
+            node -v
+            npm -v
+            # -----------------------------
+
             # 1. Di chuyển vào thư mục dự án (Sửa đường dẫn này đúng với VPS của bạn)
             cd strapi-be
 
