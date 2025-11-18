@@ -19,7 +19,7 @@ jobs:
           # timeout: 10m # Tăng thời gian chờ nếu build lâu (mặc định 30s có thể không đủ)
           script: |
             # 1. Di chuyển vào thư mục dự án (Sửa đường dẫn này đúng với VPS của bạn)
-            cd /var/www/my-strapi-project
+            cd strapi-be
 
             # 2. Lấy code mới nhất từ nhánh develop
             # 'git checkout' để chắc chắn đang ở đúng nhánh
