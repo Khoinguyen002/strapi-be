@@ -1,0 +1,14 @@
+{
+  "kind": "collectionType",
+  "collectionName": "loggers",
+  "info": {
+    "singularName": "logger",
+    "pluralName": "loggers",
+    "displayName": "Logger"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {}
+}
