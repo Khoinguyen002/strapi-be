@@ -430,12 +430,12 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiLogLog extends Struct.CollectionTypeSchema {
-  collectionName: 'logs';
+export interface ApiLoggerLogger extends Struct.CollectionTypeSchema {
+  collectionName: 'loggers';
   info: {
-    displayName: 'Log';
-    pluralName: 'logs';
-    singularName: 'log';
+    displayName: 'Logger';
+    pluralName: 'loggers';
+    singularName: 'logger';
   };
   options: {
     draftAndPublish: true;
@@ -444,9 +444,12 @@ export interface ApiLogLog extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    Description: Schema.Attribute.Text;
+    Description: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<'oneToMany', 'api::log.log'> &
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::logger.logger'
+    > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
@@ -965,7 +968,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
-      'api::log.log': ApiLogLog;
+      'api::logger.logger': ApiLoggerLogger;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

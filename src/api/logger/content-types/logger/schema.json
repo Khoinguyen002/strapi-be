@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "logs",
+  "collectionName": "loggers",
   "info": {
-    "singularName": "log",
-    "pluralName": "logs",
-    "displayName": "Log"
+    "singularName": "logger",
+    "pluralName": "loggers",
+    "displayName": "Logger"
   },
   "options": {
     "draftAndPublish": true
@@ -12,7 +12,7 @@
   "pluginOptions": {},
   "attributes": {
     "Description": {
-      "type": "text"
+      "type": "string"
     }
   }
 }

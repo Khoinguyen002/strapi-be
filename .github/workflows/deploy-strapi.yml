@@ -33,6 +33,8 @@ jobs:
             # 2. Lấy code mới nhất từ nhánh develop
             # 'git checkout' để chắc chắn đang ở đúng nhánh
             git checkout develop
+            git reset --hard
+            git clean -fd
             git pull origin develop
 
             # 3. Cài đặt dependencies mới (nếu có)
