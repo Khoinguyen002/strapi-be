@@ -16,4 +16,9 @@ export default ({ env }) => ({
       },
     },
   },
+  upload: {
+    config: {
+      sizeLimit: 250 * 1024 * 1024, // Đơn vị là Bytes (250MB)
+    },
+  },
 });
